@@ -1,0 +1,89 @@
+/*contents*/
+.wrapper {
+    width: 970px;
+    margin: 0 auto;
+}
+	
+.sadari__fieldset {
+	margin-top:50px;
+	margin-bottom: 50px;
+    padding: 80px 0 130px 0;
+    font-family: 'notokr R', sans-serif;
+}	
+	 
+	.sadari__fieldset .fieldset__title {
+    text-align: center;
+}
+
+.sadari__fieldset .fieldset__title .title__main {
+    font-family: 'notokr M', sans-serif;
+    font-size: 30px;
+    color: #444;
+}
+
+.sadari__fieldset .fieldset__title .title__sub {
+    margin-top: 10px;
+}
+
+.sadari__fieldset .fieldset__title .title__sub span {
+    display: block;
+    font-family: 'notokr M', sans-serif;
+    font-size: 16px;
+    color: #888;
+}
+
+.sadari__fieldset .fieldset__verification {
+    width: 500px;
+    margin: 30px auto 0 auto;
+}
+.sadari__fieldset .fieldset__verification .verification__content:first-child {
+    padding: 10px;
+}
+
+.sadari__fieldset .fieldset__verification .verification__content {
+    padding: 30px 10px 10px 10px;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+}
+
+.sadari__fieldset .fieldset__verification .verification__content > div.active {
+    display: block;
+}
+
+
+
+.sadari__fieldset .fieldset__verification .verification__content .verification__list li .item__data {
+    position: relative;
+    font-size: 0;
+}
+
+.sadari__fieldset .fieldset__verification .verification__content .verification__list li .item__data input[type='password'] {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+.sadari__fieldset .fieldset__verification .verification__button {
+    margin-top: 20px;
+    font-size: 0;
+}
+
+.sadari__fieldset .fieldset__verification .verification__button .button__item.item--submit {
+    border: 0;
+}
+
+.sadari__fieldset .fieldset__verification .verification__button .button__item {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    outline: 0;
+    font-family: 'notokr M', sans-serif;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: top;
+        background: #dee2e6;
+}
+

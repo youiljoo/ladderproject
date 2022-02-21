@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.goods">
+	<!-- 리절트 맵 정의 -->
+<resultMap id="goodsResult" type="goodsVO">
+		<result property="productNum" column="productNum" />
+		<result property="productName" column="productName" />
+		<result property="productPrice" column="productPrice" />
+		<result property="category" column="category" />
+		<result property="subcategory" column="subcategory" />
+
+		<result property="productImage" column="productImage" />
+		<result property="productStock" column="productStock" />
+		<result property="company" column="company" />
+		<result property="productDate" column="productDate" />
+		<result property="fileSize" column="fileSize" />
+		<result property="originFileName" column="fileName" />
+		<result property="productStar" column="productStar" />
+	</resultMap>
+	
+	<resultMap id="imageResult" type="ImageFileVO">
+		<result property="productNum" column="productNum" />
+		<result property="fileName" column="fileName" />
+		<result property="reg_id" column="reg_id" />
+		<result property="imageNum" column="imageNum" />
+		<result property="fileType" column="fileType" />
+	</resultMap>
+	
+	<resultMap id="imgResult" type="ReviewimageVO">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="re_num" column="re_num" />
+		<result property="imageFileName" column="imageFileName" />
+	</resultMap>
+
+<select id="selectGoodsList" parameterType="String" resultMap="goodsResult">
+		<![CDATA[
+		select t.* from
+(
+select g.*,
+d.fileName
+from 
+product g, 
+product_image d
+where 
+g.productNum= d.productNum
+and d.filetype='main_image'
+order by g.productStar desc limit 4)  t 
+
+	    ]]>
+	</select>
+	
+	<select id="selectGoodsList2" parameterType="String" resultMap="goodsResult">
+		<![CDATA[
+			select t.* from
+(
+select g.*,
+d.fileName
+from 
+product g, 
+product_image d
+where 
+g.productNum= d.productNum
+and d.filetype='main_image'
+order by g.productDate desc limit 4)  t 
+
+	    ]]>
+	</select>
+	
+	<select id="selectGoodsDetail" resultMap="goodsResult" parameterType="String">
+		<![CDATA[
+	
+		select g.*, d.fileName from
+		product g, product_image d
+		where g.productNum = d.productNum 
+		and d.filetype="main_image"
+		and g.productNum=#{productNum}
+		order by g.productNum
+    	]]>
+	</select>
+	<select id="selectGoodsDetailImage" resultMap="imageResult" parameterType="String">
+		<![CDATA[
+		    	select * from  product_image 
+		    	where  fileType!='main_image'
+				and productNum=#{productNum}
+    	]]>
+	</select>
+	
+	<!-- 상품 상세페이지 내 후기 -->
+	<!-- 후기 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="reviewList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT re_num, re_star, re_regdate, re_content, re_regdate, user_id 
+            FROM productreview where productNum=#{productNum}
+            ORDER BY re_num asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="reviewListCnt" resultType="int">
+        SELECT count(*)
+        FROM productreview
+       
+        	       
+		</select>
+		
+		<!-- 후기 상세페이지 -->
+		
+		<select id="selectReview" resultType="com.mycompany.teamproject.goods.vo.GoodsVO" parameterType="int">
+			<![CDATA[
+			select productName, re_num, re_star, user_id,re_content,imageFileName,re_regdate from productreview where re_num=#{re_num}
+			]]>
+		</select>
+		
+		<select id="selectImageFileList" resultMap="imgResult" parameterType="int">
+			<![CDATA[
+				select * from re_imageFile where re_num=#{re_num}
+			]]>
+		</select>
+		
+	<!-- 마우스, 모니터, 키보드, 헤드셋, 스피커 -->
+	<select id = "productList" resultMap = "goodsResult" parameterType = "String">
+		<![CDATA[
+			select p.*, i.fileName
+			from product as p
+			join product_image as i
+			on p.productNum = i.productNum
+			where p.category = #{category}
+			and i.fileType = 'main_image'
+		]]>
+	</select>	
+	
+	<select id = "productsortList" resultMap="goodsResult">
+		
+			select p.*, i.fileName
+			from product as p
+			left join product_image as i
+			on p.productNum = i.productNum
+			where p.category = #{category}
+			and i.fileType = 'main_image' 
+			<if test='sortType == "hit"'>
+				order by p.productStar desc
+			</if>
+			<if test='sortType == "lowprice"'>
+				order by p.productPrice asc
+			</if>
+			<if test='sortType == "highprice"'>
+				order by p.productPrice desc
+			</if>
+			<if test='sortType == "recent"'>
+				order by p.productDate desc
+			</if>
+							
+	</select>
+	
+	<select id = "productListCnt" resultType="int" parameterType="int">
+		<![CDATA[
+			select count(*)
+			from product where category=#{category}
+		]]>
+	</select>
+	
+	<!-- 검색 -->
+	<select id="selectGoodsBySearchWord" resultMap="goodsResult"   parameterType="String"  >
+     	<![CDATA[
+			select p.*, i.fileName 
+			from product as p
+			join product_image as i
+			on p.productNum	= i.productNum
+		    where p.productName like concat('%',#{searchWord},'%')
+		]]>
+	</select>	
+		
+	
+
+</mapper>

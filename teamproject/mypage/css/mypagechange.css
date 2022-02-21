@@ -1,0 +1,133 @@
+
+.sadari_section {
+    min-width: 970px;
+    padding-bottom: 100px;
+    font-family: 'notokr R', 'Malgun Gothic', '¸¼Àº°íµñ', sans-serif;
+    line-height: 1.4;
+}
+
+.wrapper {
+    width: 970px;
+    margin: 0 auto;
+}
+
+.sadari__fieldset {
+    padding: 80px 0 130px 0;
+    font-family: 'notokr R', sans-serif;
+}
+.sadari__fieldset .fieldset__title {
+    text-align: center;
+}
+.sadari__fieldset .fieldset__title .title__main {
+    font-family: 'notokr M', sans-serif;
+    font-size: 30px;
+    color: #444;
+}
+.sadari__fieldset .fieldset__write {
+    width: 600px;
+    margin: 30px auto 0 auto;
+}
+.sadari__fieldset .fieldset__write .write__content[data-type='P'] {
+    display: block;
+}
+
+.sadari__fieldset .fieldset__write .write__content {
+    margin-top: 20px;
+}
+.sadari__fieldset .fieldset__write .write__list li:first-child {
+    margin-top: 0;
+}
+
+.sadari__fieldset .fieldset__write .write__list li .item__title {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'notokr M', sans-serif;
+    font-size: 16px;
+    color: #444;
+}
+.sadari__fieldset .fieldset__write .write__list li .item__data {
+	display:plex;
+    position: relative;
+    font-size: 0;
+}
+.sadari__fieldset .fieldset__write .write__list li .item__data input[type='password'] {
+    width: 85%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+.sadari__fieldset .fieldset__write .write__list li .item__data input[type='text'] {
+    width: 85%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+
+.sadari__fieldset .fieldset__write .write__list li .item__data input[type='tel'] {
+    width: 85%;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 48px;
+}
+
+ .el--col_7 {
+    width: 69% !important;
+    margin-right: 1%;
+}
+.sadari__fieldset .fieldset__write .write__list li .item__data .data__addr-btn {
+    width: 30%;
+    height: 50px;
+    background: #444;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.sadari__fieldset .fieldset__write .write__list li {
+    margin-top: 10px;
+}
+.sadari__fieldset .fieldset__write .write__button {
+    margin-top: 20px;
+    font-size: 0;
+}
+.sadari__fieldset .fieldset__write .write__button.col--2 .button__item:first-child {
+    width: 49%;
+    margin-right: 2%;
+}
+.sadari__fieldset .fieldset__write .write__button .button__item.item--submit {
+    background: #999999;
+    border: 0;
+    color: #fff;
+}
+.sadari__fieldset .fieldset__write .write__button .button__item.item--cancel {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    color: #888;
+}
+.sadari__fieldset .fieldset__write .write__button.col--2 .button__item {
+    width: 49%;
+     text-decoration: none;
+}
+.sadari__fieldset .fieldset__write .write__button .button__item {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    outline: 0;
+    font-family: 'notokr M', sans-serif;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: top;
+}
+
+
+.sadari__fieldset .fieldset__write .write__agree {
+    margin-top: 30px;
+}

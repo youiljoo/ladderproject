@@ -1,0 +1,587 @@
+.flex-center3{display: flex; justify-content: center; align-items: center; 
+    font-size: 12px;
+    font-family: Noto-R;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 100px;
+    width: 100%;
+    min-width: 1300px;
+    background: #f8f8f8;
+    box-shadow: 2px 5px 4px 1px rgba(0, 0, 0, 0.03) inset;} 
+
+.myP_Ttype1 th, .qna_tit li, .wrong_tit li {
+    position: relative;
+    padding: 12px 0;
+    background: #f9f9f9;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1.4;
+    font-family: Noto-B;
+    font-weight: normal;
+    text-align: center;
+}
+
+main td {    
+    display: table-cell;
+    vertical-align: inherit;
+    margin: 0;
+    font-family: Noto-R;
+    box-sizing: border-box;
+    padding: 22px 0;
+    border-bottom: 1px solid #e8e8e8;    
+    background: #fff;
+    color: #1a1a1a;
+    font-size: 16px;
+    text-align: center;
+    word-break: break-all;    
+} 
+/*contents*/
+.myP_left {
+    float: left;
+    width: 220px;
+}
+.my_gnb {
+    margin-top: 200px;
+}
+.my_gnb .depth1 {
+    position: relative;
+    width: 100%;
+}
+.my_gnb .depth1 > a {
+    position: relative;
+    display: block;
+    padding: 17px 0;
+    width: 100%;
+    color: #1a1a1a; 
+    font-size: 18px;
+    font-family: Noto-M;
+	 text-decoration: none;
+}
+.my_gnb .depth1 > i {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    display: block;
+    width: 14px;
+    height: 9px;
+    background: url(//image5.compuzone.co.kr/img/images/bsk/arrow_downB.png) center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.my_gnb .depth2 {
+    display: none;
+    padding: 5px 20px 5px;
+}
+
+.my_gnb .depth2 > ul > li {
+    margin-bottom: 8px;
+}
+.my_gnb .depth2 > ul > li > a {
+	 text-decoration: none;
+    color: #949494;
+    font-size: 16px;
+}
+
+.my_gnb .depth1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #d8d8d8;
+}
+
+
+    .myP_left li {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-family: Noto-M;
+    
+    }  
+    
+  section div div ul li ul li  {  
+  
+  font-size: 12px;
+  padding: 0px;
+  margin-bottom : 8px;
+  text-decoration-line: none;
+  }
+  
+   section div div ul li ul li  a{
+  text-decoration-line: none;
+  color: #949494;
+    font-size: 16px;
+  
+  }
+  
+  #main-menu{
+  margin-left : 10px;
+  }
+section{
+width: 100%;
+}
+
+section>div{
+    width: 1280px;
+    height: 100%;
+    display: flex;
+}
+
+section div main{
+float: left;
+margin: 40px 0 0 80px;
+width: 1000px;
+}
+.listTable21 {  
+    padding: 30px 10px 30px 10px; 
+    background: #fff;
+    box-shadow: 1px 2px 2px 0 rgb(0 0 0 / 16%);
+    border-radius: 2px;
+}  
+.tit_txt {  
+	font-size: 20px; 
+    color: #1a1a1a;
+    font-family: Noto-M;
+    }
+    
+
+.title_wrap { 
+    margin-bottom: 18px;
+}
+.myP_search {
+    padding: 22px 20px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+}
+.myP_search .left_area {
+    float: left;
+}
+.myP_select.select_year {
+    margin-right: 10px;
+    width: 97px;
+}
+.myP_select {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 40px;
+    background: #fff;
+    vertical-align: top;
+    cursor: pointer;
+}
+.myP_select select {  
+    padding: 0 40px 0 10px;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 14px;
+    color: #1a1a1a;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    letter-spacing: -0.5px;
+    background: url(//image5.compuzone.co.kr/img/images/bsk/arrow_downG.png) 93% center no-repeat;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: noto-R;
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.myP_search .left_area .select_year + .input_area {
+    margin-left: 0;
+}
+.myP_search .left_area .top .input_area {
+    position: relative;
+    display: inline-block;
+    color: #949494;
+    font-size: 16px;
+    vertical-align: top;
+}
+.inputWrap {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    box-sizing: Border-box;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.myP_search .calender:before, .myP_search .year:before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 7px;
+    width: 1px;
+    height: 25px;
+    background: #e8e8e8;
+}
+
+.myP_MWbbtn {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    line-height: 38px; 
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+.hasDatepicker{
+    margin: 0;
+    font-family: Noto-R;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 38px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding: 0 34px 0 19px;
+    color: #949494;
+    background: url("//image5.compuzone.co.kr/img/images/mypage21/calender.png") 94% 50% no-repeat;
+    cursor: pointer;
+    }
+.myP_search .left_area .bottom {
+    margin-top: 20px;
+}
+.myP_select.select2 {
+    margin-right: 10px;
+    width: 200px;
+}
+.myP_search .inputWrap.search2 {
+    width: 380px;
+}
+
+.myP_search .inputWrap.search input, .myP_search .inputWrap.search2 input {
+    padding: 0 30px 0 44px;
+    background: url(//image5.compuzone.co.kr/img/images/mypage21/magnifier.png) 3% center no-repeat;
+    text-align: left;
+}
+.inputWrap input {
+    display: block;
+    padding: 0 15px;
+    width: 100%;
+    height: 100%;
+    line-height: 38px;
+    color: #1a1a1a;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+.myP_contents * {
+    font-family: Noto-R;
+    box-sizing: border-box;
+}
+.myP_search .right_area {
+    float: right;
+}
+.myP_search .right_area > a {
+    display: block;
+}
+.myP_search .save_B15btn, .myP_search .reset_W15btn {
+    padding: 0;
+    width: 78px;
+    margin-left:30px;
+}
+.save_B15btn {
+    display: inline-block;
+    padding: 0 24px;
+    height: 40px;
+    line-height: 38px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    border-radius: 2px;
+    color: #fff !important;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+.reset_W15btn {
+    display: inline-block;
+    padding: 0 6px 0 4px;
+    height: 40px;
+    line-height: 38px;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 2px;
+    color: #1a1a1a !important;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+.myP_search .right_area .reset_W15btn {
+    margin-top: 20px;
+}
+.reset_W15btn > i {
+    display: inline-block;
+    vertical-align: -6px;
+}
+
+.orderStep_list{text-align:center;}
+.orderStep_list li{float:left; display:block;}
+.orderStep_list li + li{margin-lefT:60px;}
+.orderStep_list .step_text{margin-bottom:5px; color:#949494; font-size:12px; font-family:'spoqa M';}
+.orderStep_list .wCircle{margin:5px auto 0; display:table;}
+.orderStep_list .wCircle > span{display:table-cell; vertical-align:middle; text-align:center;}
+.orderStep_list dl{margin-top:8px;}
+.orderStep_list dt{color:#3a3a3a; font-size:16px; font-family:Noto-M;}
+.orderStep_list dd{margin-top:6px; color:#3a3a3a; font-size:13px;}
+.order_noticeBox{margin-top:30px; padding:20px; background:#f2f2f2;}
+.order_noticeBox .notice_list li{position:relative; padding-left:18px; color:#6c6c6c; font-size:13px; line-height:1.5;}
+.order_noticeBox .notice_list.listDot li{padding-left:10px;}
+.order_noticeBox .notice_list li + li{margin-top:4px;}
+.order_noticeBox .notice_list li > i{position:absolute; left:0; top:-1px; color:#6c6c6c; font-size:15px;}
+.order_noticeBox .notice_list .page_go{margin-right:15px; color:#1c8fed; font-size:13px; text-decoration:underline;}
+
+
+.orderList_Twrap21 .orderList_con {
+    position: relative;
+    padding: 30px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #f2f2f2;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 16%);
+}
+
+
+.hidden {
+	display: none;
+}
+
+.myPage21 .no_list, .refund_accont .no_list {
+    padding: 65px 0 40px;
+    text-align: center;
+}
+
+.myPage21 .no_list span, .refund_accont .no_list span {
+    display: block;
+}
+
+.myPage21 .no_list .txt, .refund_accont .no_list .txt {
+    margin-top: 15px;
+    color: #b4b4b4;
+    font-size: 16px;
+}
+.myP_MBbtn {  
+    position: relative;
+    display: inline-block;
+    padding: 0 18px;
+    height: 40px;
+    line-height: 38px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    border-radius: 2px;
+    color: #fff !important;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+.myPage21 .no_list .myP_MBbtn {
+    margin-top: 30px;
+}
+
+.myP_contents * {
+    font-family: Noto-R;
+    box-sizing: border-box;
+}
+
+.no_list {
+    padding: 65px 0 40px;
+    text-align: center;
+}
+
+.no_list .myP_MBbtn {
+    margin-top: 30px;
+}
+
+
+.listTable_TotalTit {
+    margin: 28px 0 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.mt50 {
+    margin-top: 50px !important;
+}
+
+
+    
+   .social_Nprofile_profileWrap 
+  {
+    position: relative;
+    margin-top: 40px;
+    padding: 30px 0 0;
+    width: 220px;
+    height: 245px;
+    text-align: center;
+}
+
+.myP_left .cs_box {
+    margin-top: 20px;
+    padding: 20px 0 20px 20px;
+    width: 220px;
+    background: #fff;
+    border-radius: 10px 0 10px 0;
+    box-shadow: 1px 2px 2px 0 rgb(0 0 0 / 16%);
+}
+
+.cs_box > h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.cs_box > p {
+    color: #707070;
+    font-size: 12px;
+    font-family: 'spoqa M';
+}
+
+.myP_SWbtn {
+	text-decoration-line: none;
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+    height: 26px;
+    line-height: 24px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    color: #1a1a1a !important;
+    font-size: 12px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.SpqBlue2{    
+    margin-top: 10px;
+    box-sizing: border-box;
+    color: #1c8fed !important;
+    font-family: 'spoqa M';
+    margin-bottom: 5px;
+    font-size: 32px;
+    font-weight: normal;}
+    
+
+.clearfix:after{content:""; display:block; clear:both;}
+
+/*footer*/
+#footer {
+    background: #232425;
+}
+
+#footer .container {
+    max-width: 1140px; 
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#footer .col-lg-3 {
+	position: relative;
+    width: 285px;
+    padding-right: 15px;
+    padding-left: 15px;
+    display : flex;
+}
+
+#footer .block.about img {
+    margin-bottom: 25px;
+    vertical-align: middle;
+}
+
+#footer .block.about p {
+    line-height: 25px;
+    width: 300px; 
+}
+
+#footer table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+#footer tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+#footer tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+#footer td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+#footer .block h2 {
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+#footer .block h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+#footer .block h6 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+#footer .block h5 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 25px;  
+}
+
+#footer img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+#footer .block about {
+	display: flex;  
+
+
+}

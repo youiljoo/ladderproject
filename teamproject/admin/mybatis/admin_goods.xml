@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin_goods">
+		<!-- 리절트맵 정의 -->
+		
+		
+	<resultMap id="imgResult" type="imageFileVO">
+		<result property="imageNum" column="imageNum" />
+		<result property="productNum" column="productNum" />
+		<result property="fileName" column="fileName" />
+		<result property="fileType" column="fileType" />
+		<result property="creDate" column="creDate" />
+		<result property="category" column="category" />
+	</resultMap>
+		<!-- 상품 관리 -->
+		
+		<!-- 상품 목록 -->
+		
+		<select id="AllGoodsList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT *
+            FROM product <include refid="pro_search"></include>
+            ORDER BY productNum asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="AllGoodsListCnt" resultType="int">
+        SELECT count(*)
+        FROM product <include refid="pro_search"></include>
+        	       
+		</select>
+		
+		
+		<sql id="pro_search">
+				<if test="searchType != null">
+					<if test="searchType == 'a'.toString()">
+					<![CDATA[
+						where productName LIKE CONCAT('%',#{keyword},'%')
+					]]>
+					</if>
+				
+					<if test="searchType == 'b'.toString()">
+					<![CDATA[
+						where category LIKE CONCAT('%',#{keyword},'%')
+					]]>
+					</if>
+					<if test="searchType == 'c'.toString()">
+					<![CDATA[
+						where productPrice LIKE CONCAT('%',#{keyword},'%')
+					]]>
+					</if>
+				
+					<if test="searchType == 'd'.toString()">
+					<![CDATA[
+						where productStock LIKE CONCAT('%',#{keyword},'%')
+					]]>
+					</if>
+				
+				</if>
+		</sql>
+		
+		<!-- 상품 상세보기 -->
+		<select id="selectGoodsDetail" resultType="com.mycompany.teamproject.goods.vo.GoodsVO" parameterType="int">
+			<![CDATA[
+			select * from product where productNum=#{productNum}
+			]]>
+			
+		</select>
+		
+			
+		<select id="selectGoodsImageFileList" resultMap="imgResult" parameterType="int">
+			<![CDATA[
+				select * from product_image where productNum=#{productNum}
+			]]>
+		</select>
+		
+		<!-- 상품 등록 -->
+		
+		<insert id="insertNewGoods" parameterType="java.util.Map">
+			<selectKey resultType="String" keyProperty="productNum" order="BEFORE">
+				select nextval('productNum') 
+			</selectKey>
+			<![CDATA[
+				insert into product values (#{productNum},#{productName},#{productPrice},#{category},#{subcategory},#{productStock},
+				#{company},now(),null,#{productInfo},null)
+			]]>
+		</insert>
+		
+		<insert id="insertGoodsImageFile" parameterType="imageFileVO">
+			
+			<![CDATA[
+				insert into product_image values (#{productNum},#{fileName},#{fileType},now(), null)
+			]]>			
+		</insert>
+		
+		<!-- 상품 수정 -->
+		
+		<update id="updateGoodsInfo" parameterType="java.util.HashMap">
+			update product
+			<set>
+				
+					<if test="productName!='' and productName!=null">
+					productName=#{productName}
+					</if>
+					<if test="productPrice!='' and productPrice!=null">
+					productPrice=#{productPrice}
+					</if>
+					<if test="productStock!='' and productStock!=null">
+					productStock=#{productStock}
+					</if>
+					<if test="company!='' and company!=null">
+					company=#{company}
+					</if>
+					<if test="productStar!='' and productStar!=null">
+					productStar=#{productStar}
+					</if>
+					<if test="productInfo!='' and productInfo!=null">
+					productInfo=#{productInfo}
+					</if>									
+			</set>
+			where productNum=#{productNum}
+		</update>
+		
+		<update id="updateGoodsImage" parameterType="imageFileVO">
+			update product_image set fileName=#{fileName} where productNum=#{productNum} and imageNum=#{imageNum}
+		</update>
+		
+		<delete id="deleteGoodsImage" parameterType="String">
+	 	 delete from product_image
+	 	 where imageNum=#{imageNum}
+		</delete>
+		
+		<!-- 상품 삭제 -->
+		<delete id="deleteGoods" parameterType="int">
+			<![CDATA[
+			delete from product where productNum=#{productNum};
+			]]>
+		</delete>
+
+		
+
+<!-- 상품 상세페이지 내 후기 -->
+	<!-- 후기 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="reviewList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT re_num, re_star, re_regdate, re_content, re_regdate, user_id, productName
+            FROM productreview <include refid="review_search"></include>
+            ORDER BY re_num asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="reviewListCnt" resultType="int">
+        SELECT count(*)
+        FROM productreview <include refid="review_search"></include>
+        	       
+		</select>
+		
+		<sql id="review_search">
+  			<if test="searchType != null">
+	  			<if test="searchType == 'p'.toString()">
+	  			<![CDATA[
+	  				where productName like concat('%', #{keyword}, '%')
+	  			]]>
+		  		</if>
+		  		
+		  		<if test="searchType == 'c'.toString()">
+		  			<![CDATA[
+		  				where re_content like concat('%', #{keyword}, '%')
+		  			]]>
+		  		</if>
+		  		
+		  		<if test="searchType == 'i'.toString()">
+		  			<![CDATA[
+		  				where user_id like concat('%', #{keyword}, '%')
+		  			]]>
+		  		</if>
+		  	</if>
+		  </sql>
+		
+		<!-- 후기 상세보기 -->
+		<select id="selectReview" resultType="com.mycompany.teamproject.goods.vo.GoodsVO" parameterType="int">
+			<![CDATA[
+			select * from productreview where re_num=#{re_num}
+			]]>
+			
+		</select>
+		
+		
+		<!-- 답변하기 -->
+		<update id="updateReview" parameterType="com.mycompany.teamproject.goods.vo.GoodsVO">
+			<![CDATA[
+			update productreview set re_reply = #{re_reply} where re_num=#{re_num}
+			]]>
+		</update>
+		
+		<!-- 후기 삭제 -->		
+		<delete id="deleteReview" parameterType="int">
+			<![CDATA[
+			delete from productreview where re_num=#{re_num};
+			]]>
+		</delete>
+		
+
+</mapper>

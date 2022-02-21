@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="boardmain" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/board/boardmain.jsp" />
+   </definition>
+   
+	<definition name="boardas" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardas.jsp" />
+	</definition>
+	
+	<definition name="boardaswriting" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardaswriting.jsp" />
+	</definition>
+	
+	<definition name="boardconsulting" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardconsulting.jsp" />
+	</definition>
+	
+	<definition name="boardconsultwriting" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardconsultwriting.jsp" />
+	</definition>
+	
+	<definition name="boardnotice" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardnotice.jsp" />
+	</definition>
+   
+	<definition name="boardnoticedetail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardnoticedetail.jsp" />
+	</definition>
+	
+	<definition name="boardqna" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardqna.jsp" />
+	</definition>
+	
+	<definition name="boardqnawriting" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardqnawriting.jsp" />
+	</definition>
+	
+	<definition name="boardconsultingdetail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardconsultingdetail.jsp" />
+	</definition>
+	
+	<definition name="boardconsultingupdate" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardconsultingupdate.jsp" />
+	</definition>
+	
+	<definition name="boardqnadetail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardqnadetail.jsp" />
+	</definition>
+	
+	<definition name="boardqnaupdate" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardqnaupdate.jsp" />
+	</definition>
+	
+	<definition name="boardasdetail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardasdetail.jsp" />
+	</definition>
+	
+	<definition name="boardasupdate" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/board/boardasupdate.jsp" />
+	</definition>
+	
+</tiles-definitions>

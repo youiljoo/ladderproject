@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	
+	<definition name="admin_main" extends="baseLayout">
+		<put-attribute name="title" value="관리자 메인페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/main/admin_main.jsp" />
+	</definition>
+	
+	<definition name="admin_main_month" extends="baseLayout">
+		<put-attribute name="title" value="이달 운영실적" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/main/admin_main_month.jsp" />
+	</definition>
+	
+	<definition name="admin_main_year" extends="baseLayout">
+		<put-attribute name="title" value="올해 운영실적" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/main/admin_main_year.jsp" />
+	</definition>
+	
+	<definition name="admin_main_notice" extends="baseLayout">
+		<put-attribute name="title" value="관리자 공지사항" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_main_notice.jsp" />
+	</definition>
+	
+	<definition name="admin_main_notice_add" extends="baseLayout">
+		<put-attribute name="title" value="관리자 공지사항 글쓰기" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_main_notice_add.jsp" />
+	</definition>
+	
+	<definition name="admin_main_notice_update" extends="baseLayout">
+		<put-attribute name="title" value="괸리자 공지사항 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_main_notice_update.jsp" />
+	</definition>
+
+	<definition name="admin_member" extends="baseLayout">
+		<put-attribute name="title" value="회원관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/member/admin_member.jsp" />
+	</definition>
+	
+	<definition name="admin_member_de" extends="baseLayout">
+		<put-attribute name="title" value="회원관리 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/member/admin_member_de.jsp" />
+	</definition>
+	
+	<definition name="admin_order" extends="baseLayout">
+		<put-attribute name="title" value="주문 관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/order/admin_order.jsp" />
+	</definition>
+	
+	<definition name="admin_order_de" extends="baseLayout">
+		<put-attribute name="title" value="주문관리 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/order/admin_order_de.jsp" />
+	</definition>
+	
+	<definition name="admin_prod" extends="baseLayout">
+		<put-attribute name="title" value="상품 관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/admin_prod.jsp" />
+	</definition>
+	
+	<definition name="admin_prod_de" extends="baseLayout">
+		<put-attribute name="title" value="상품 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/admin_prod_de.jsp" />
+	</definition>
+	
+	<definition name="admin_prod_add" extends="baseLayout">
+		<put-attribute name="title" value="상품 등록" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/admin_prod_add.jsp" />
+	</definition>
+	
+
+	<definition name="admin_prod_update" extends="baseLayout">
+		<put-attribute name="title" value="상품 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/admin_prod_update.jsp" />
+	</definition>
+	
+	<definition name="admin_review" extends="baseLayout">
+		<put-attribute name="title" value="후기관리" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/review/admin_review.jsp" />
+	</definition>
+	
+	<definition name="admin_review_re" extends="baseLayout">
+		<put-attribute name="title" value="후기관리 상세페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/review/admin_review_re.jsp" />
+	</definition>
+	
+	<definition name="admin_review_re2" extends="baseLayout">
+		<put-attribute name="title" value="후기관리 답변" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/review/admin_review_re2.jsp" />
+	</definition>
+	
+	<definition name="admin_board_notice" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_notice.jsp" />
+	</definition>
+	
+	<definition name="admin_board_notice_detail" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_notice_detail.jsp" />
+	</definition>
+	
+	<definition name="admin_board_notice_write" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_notice_write.jsp" />
+	</definition>
+	
+	<definition name="admin_board_main" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_main.jsp" />
+	</definition>
+	
+	<definition name="admin_board_consulting" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_consulting.jsp" />
+	</definition>
+	
+	<definition name="admin_board_consulting_detail" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_consulting_detail.jsp" />
+	</definition>
+	
+	<definition name="admin_board_consulting_receive" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_consulting_receive.jsp" />
+	</definition>
+	
+	<definition name="admin_board_QNA" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_QNA.jsp" />
+	</definition>
+	
+	<definition name="admin_board_notice_update" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_notice_update.jsp" />
+	</definition>
+	
+	<definition name="admin_board_QNA_detail" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_QNA_detail.jsp" />
+	</definition>
+	
+	<definition name="admin_board_QNA_receive" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_QNA_receive.jsp" />
+	</definition>
+	
+	<definition name="admin_board_as" extends="baseLayout">
+		<put-attribute name="title" value="관리자 A/S 게시판" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_as.jsp" />
+	</definition>
+	
+	<definition name="admin_board_as_detail" extends="baseLayout">
+		<put-attribute name="title" value="관리자 A/S 상세보기" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_as_detail.jsp" />
+	</definition>
+	
+		<definition name="admin_board_AS_receive" extends="baseLayout">
+		<put-attribute name="title" value="관리자 A/S 접수 및 답변" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/board/admin_board_as_receive.jsp" />
+	</definition>
+	
+	
+	
+</tiles-definitions>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="mapper.board">
+	
+	
+	
+	<resultMap id="imgResult" type="imageVO">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="as_no" column="as_no" />
+		<result property="imageFileName" column="imageFileName" />
+	</resultMap>
+		
+		
+		<!-- 공지사항(고객지원 게시판) -->
+		
+		<!-- 게시글 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="noticeList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT n_no, user_id, n_type, n_name, n_regdate 
+            FROM notice <include refid="search0"></include>
+            ORDER BY n_no asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="noticeListCnt" resultType="int">
+        SELECT count(*)
+        FROM notice
+        	<include refid="search0"></include>       
+		</select>
+		
+		<sql id="search0">
+			<if test="searchType != null">
+				<if test="searchType == 't'.toString()">
+			<![CDATA[
+				where n_name LIKE CONCAT('%',#{keyword},'%')
+			]]>
+				</if>
+				
+				<if test="searchType == 'u'.toString()">
+				<![CDATA[
+				where n_type LIKE CONCAT('%',#{keyword},'%')
+				]]>
+				</if>
+				
+			</if>
+		</sql>
+		
+			<!-- 게시글 상세페이지 -->
+		
+		<select id="selectNotice" resultType="com.mycompany.teamproject.board.vo.BoardVO" parameterType="int">
+			<![CDATA[
+			select * from notice where n_no=#{n_no}
+			]]>
+			
+		</select>
+		
+		
+		
+		
+		
+		
+		
+		<!-- 상담문의 게시판 -->
+		
+		<!-- 게시글 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="consultingList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT c_no, c_name, user_id, c_regdate, c_state 
+            FROM consulting <include refid="search"></include>
+            ORDER BY c_no asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="consultingListCnt" resultType="int">
+        SELECT count(*)
+        FROM consulting
+        	<include refid="search"></include>       
+		</select>
+		
+		<sql id="search">
+			<if test="searchType != null">
+				<if test="searchType == 't'.toString()">
+			<![CDATA[
+				where c_name LIKE CONCAT('%',#{keyword},'%')
+			]]>
+				</if>
+				
+				<if test="searchType == 'u'.toString()">
+				<![CDATA[
+				where user_id LIKE CONCAT('%',#{keyword},'%')
+				]]>
+				</if>
+				
+			</if>
+		</sql>
+			
+		<!-- 게시글 작성 -->	
+				
+		<insert id="create" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			insert into consulting (c_no, c_type, user_id, user_phone, user_email, c_name, c_content, c_regdate)
+			values(null,#{c_type},#{user_id},#{user_phone},#{user_email},#{c_name},#{c_content},now())
+			]]>
+		</insert>
+		
+					
+		<!-- 게시글 상세페이지 -->
+		
+		<select id="selectConsulting" resultType="com.mycompany.teamproject.board.vo.BoardVO" parameterType="int">
+			<![CDATA[
+			select c_no, c_type, user_id, user_phone, user_email, c_name, c_content from consulting where c_no=#{c_no}
+			]]>
+		</select>
+		
+		<!-- 게시글 수정 -->
+		
+		<update id="updateConsulting" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update consulting set c_type=#{c_type}, c_name=#{c_name}, c_content=#{c_content} where c_no=#{c_no}
+			]]>
+		</update>
+		
+		<!-- 게시글 삭제 -->
+		
+		<delete id="deleteConsulting" parameterType="int">
+			<![CDATA[
+			delete from consulting where c_no=#{c_no};
+			]]>
+		</delete>
+		
+		
+		
+		
+		<!-- Q&A 게시판 -->
+		
+		<!-- 게시글 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="qnaList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT q_no, q_name, user_id, q_regdate, q_state, q_secret 
+            FROM qanda <include refid="search2"></include>
+            ORDER BY q_no asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+				
+		<select id="qnaListCnt" resultType="int">
+        SELECT count(*)
+        FROM qanda
+        	<include refid="search2"></include>       
+		</select>
+		
+		<sql id="search2">
+			<if test="searchType != null">
+			
+				
+				<if test="searchType == 'u'.toString()">
+				<![CDATA[
+				where user_id LIKE CONCAT('%',#{keyword},'%')
+				]]>
+				</if>
+				
+			</if>
+		</sql>
+		
+		<!-- 게시글 작성 -->
+		
+		<insert id="create2" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			insert into qanda (q_no, q_type, user_id, user_phone, user_email, q_name, q_content, q_secret, q_regdate)
+			values (null,#{q_type},#{user_id},#{user_phone},#{user_email},#{q_name},#{q_content},#{q_secret},now())
+		</insert>
+		
+		<!-- 게시글 상세페이지 -->
+		<select id="selectQNA" resultType="com.mycompany.teamproject.board.vo.BoardVO" parameterType="int">
+			<![CDATA[
+			select q_no, q_type, user_id, user_phone, user_email, q_name, q_content, q_secret from qanda where q_no=#{q_no}
+			]]>
+		</select>
+		
+		<!-- 게시글 수정 -->
+		
+		<update id="updateQNA" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update qanda set q_type=#{q_type}, q_name=#{q_name}, q_content=#{q_content}, q_secret=#{q_secret} where q_no=#{q_no}
+			]]>
+		</update>
+		
+		<!-- 게시글 삭제 -->
+		
+		<delete id="deleteQNA" parameterType="int">
+			<![CDATA[
+			delete from qanda where q_no=#{q_no};
+			]]>
+		</delete>
+					
+		
+		
+		<!-- A/S 문의 게시판 -->
+		
+		<!-- 게시글 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="asList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT as_no, as_name, user_id, as_regdate, as_state 
+            FROM `as` <include refid="search3"></include>
+            ORDER BY as_no asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="asListCnt" resultType="int">
+        SELECT count(*)
+        FROM `as`
+        	<include refid="search3"></include>       
+		</select>
+		
+		<sql id="search3">
+			<if test="searchType != null">
+				<if test="searchType == 't'.toString()">
+			<![CDATA[
+				where as_name LIKE CONCAT('%',#{keyword},'%')
+			]]>
+				</if>
+				
+				<if test="searchType == 'u'.toString()">
+				<![CDATA[
+				where user_id LIKE CONCAT('%',#{keyword},'%')
+				]]>
+				</if>
+				
+			</if>
+		</sql>
+		
+		<!-- 게시글 작성 (여러 이미지 첨부기능)-->
+		
+		<insert id="create3" parameterType="java.util.Map">
+			<![CDATA[
+			insert into `as` (as_no, as_type, user_id, user_phone, user_email, as_name, as_content, imageFileName, as_regdate)
+			values (null,#{as_type},#{user_id},#{user_phone},#{user_email},#{as_name},#{as_content},#{imageFileName},now())
+			]]>
+		</insert>
+		
+		<insert id="insertNewImage" parameterType="java.util.List">
+			
+				insert into as_imagefile(imageFileNO,imageFileName,as_no,regDate) values 
+				<foreach collection="list" item="item" separator=",">
+				(#{item.imageFileNO},#{item.imageFileName},#{item.as_no},now())
+				</foreach>
+		</insert>
+		<select id="selectNewImageFileNO" resultType="int">
+			<![CDATA[
+				select ifnull(max(imageFileNO),0) from as_imageFile
+			]]>
+		</select>
+		
+		
+		
+		<select id="selectNewAs_no" resultType="int">
+			<![CDATA[
+				select ifnull(max(as_no),0)+1 from `as`
+			]]>
+		</select>
+		
+		
+		
+		
+		<!-- 게시글 상세페이지 -->
+		
+		<select id="selectAS" resultType="com.mycompany.teamproject.board.vo.BoardVO" parameterType="int">
+			<![CDATA[
+			select as_no, as_type, user_id, user_phone, user_email, as_name, as_content, imageFileName from `as` where as_no=#{as_no}
+			]]>
+		</select>
+		
+		<select id="selectImageFileList" resultMap="imgResult" parameterType="int">
+			<![CDATA[
+				select * from as_imageFile where as_no=#{as_no}
+			]]>
+		</select>
+		
+		<!-- 게시글 수정 -->
+		
+		<update id="updateAS" parameterType="java.util.Map">
+			<![CDATA[
+			update `as` set as_type=#{as_type}, as_name=#{as_name}, as_content=#{as_content}, imageFileName=#{imageFileName} where as_no=#{as_no}
+			]]>
+		</update>
+	
+		<!-- 게시글 삭제 -->
+		
+		<delete id="deleteAS" parameterType="int">
+			<![CDATA[
+			delete from `as` where as_no=#{as_no};
+			]]>
+		</delete>
+		
+	
+	
+
+	
+	</mapper>

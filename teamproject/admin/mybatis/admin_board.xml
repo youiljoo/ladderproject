@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="mapper.admin_board">
+	
+	
+	
+	<!-- 리절트 맵 정의 -->	
+	<resultMap id="adminResult" type="adminboardVO">    	
+    	<result property="a_main_NO" column="a_main_NO" />
+    	<result property="a_main_title" column="a_main_title" />
+    	<result property="a_main_content" column="a_main_content" />
+    	<result property="a_main_writeDate" column="a_main_writeDate" />
+	</resultMap> 
+	
+	
+	<resultMap id="imgResult" type="imageVO">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="as_no" column="as_no" />
+		<result property="imageFileName" column="imageFileName" />
+	</resultMap>
+		
+		
+		<!-- 공지사항 (고객지원 게시판) (게시글 리스트와 상세페이지는 board.xml에 있음)--> 
+		
+	<!-- 게시글 등록 -->
+	
+		<insert id="ncreate" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			insert into notice (n_no, n_type, n_name, n_content, n_regdate, user_id)
+			values(null,#{n_type},#{n_name},#{n_content},now(),#{user_id})
+			]]>
+		</insert>
+		
+	<!-- 게시글 수정 -->
+	
+		<update id="updateNotice" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update notice set n_type=#{n_type}, n_name=#{n_name}, n_content=#{n_content} where n_no=#{n_no}
+			]]>
+		</update>
+		
+	<!-- 게시글 삭제 -->
+		
+		<delete id="deleteNotice" parameterType="int">
+			<![CDATA[
+			delete from notice where n_no=#{n_no};
+			]]>
+		</delete>
+	
+	
+	
+	<!-- 관리자 게시판 -->
+	
+	<!-- 게시글 목록(페이징, 검색 기능 추가) -->
+		
+		<select id="adminList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT a_main_NO, a_main_title, a_main_writeDate 
+            FROM admin_board <include refid="ad_search"></include>
+            ORDER BY a_main_NO asc
+            LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="adminListCnt" resultType="int">
+        SELECT count(*)
+        FROM admin_board
+        	<include refid="ad_search"></include>       
+		</select>
+		
+		<sql id="ad_search">
+			<if test="searchType != null">
+				<if test="searchType == 't'.toString()">
+			<![CDATA[
+				where a_main_title LIKE CONCAT('%',#{keyword},'%')
+			]]>
+				</if>
+												
+			</if>
+		</sql>
+	
+		<!-- 게시글 등록 -->
+	
+		<insert id="adcreate" parameterType="com.mycompany.teamproject.admin.board.vo.AdminBoardVO">
+			<![CDATA[
+			insert into admin_board (a_main_NO, a_main_title, a_main_content, a_main_writeDate, user_id)
+			values(null,#{a_main_title},#{a_main_content},now(),default)
+			]]>
+		</insert>
+	
+		<!-- 게시글 상세페이지 -->
+		
+		<select id="selectadNotice" resultType="com.mycompany.teamproject.admin.board.vo.AdminBoardVO" parameterType="int">
+			<![CDATA[
+			select * from admin_board where a_main_NO=#{a_main_NO}
+			]]>
+			
+		</select>	
+	
+		<!-- 게시글 수정 -->
+	
+		<update id="updateadNotice" parameterType="com.mycompany.teamproject.admin.board.vo.AdminBoardVO">
+			<![CDATA[
+			update admin_board set a_main_title=#{a_main_title}, a_main_content=#{a_main_content} where a_main_NO=#{a_main_NO}
+			]]>
+		</update>
+	
+		
+		<!-- 게시글 삭제 -->
+		
+		<delete id="deleteadNotice" parameterType="int">
+			<![CDATA[
+			delete from admin_board where a_main_NO=#{a_main_NO};
+			]]>
+		</delete>
+	
+	
+	
+	
+	
+	<!-- 상담문의 게시판 -->
+	
+	<!-- 게시글 접수 및 답변 -->
+	<update id="receiveConsulting" parameterType="int">
+			<![CDATA[
+			update consulting set c_state="접수완료" where c_no=#{c_no};
+			]]>
+		</update>
+		
+		
+	<update id="creplycreate" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update consulting set c_reply=#{c_reply} where c_no=#{c_no};
+			]]>
+		</update>		
+	
+	<!--  QNA 게시판 -->
+	
+	<!-- 게시글 접수 및 답변 -->
+	
+	<update id="receiveQNA" parameterType="int">
+			<![CDATA[
+			update qanda set q_state="접수완료" where q_no=#{q_no};
+			]]>
+		</update>
+		
+	<update id="qreplycreate" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update qanda set q_reply=#{q_reply} where q_no=#{q_no};
+			]]>
+		</update>
+		
+	<!--  AS 게시판 -->
+	
+	<!-- 게시글 접수 및 답변 -->
+	
+	<update id="receiveAS" parameterType="int">
+			<![CDATA[
+			update `as` set as_state="접수완료" where as_no=#{as_no};
+			]]>
+		</update>
+		
+	<update id="asreplycreate" parameterType="com.mycompany.teamproject.board.vo.BoardVO">
+			<![CDATA[
+			update `as` set as_reply=#{as_reply} where as_no=#{as_no};
+			]]>
+		</update>			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</mapper>

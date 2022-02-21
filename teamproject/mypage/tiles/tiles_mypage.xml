@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="mypage" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지 메인" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp" />
+	</definition>
+	<definition name="mypageas" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지 교환,환불 내역" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypageas.jsp" />
+	</definition>
+	<definition name="orderlist" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지 주문내역" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/orderlist.jsp" />
+	</definition>
+	<definition name="orderlist_proreview" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지 주문내역 전체보기" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/orderlist_proreview.jsp" />
+	</definition>
+	<definition name="reviewlist" extends="baseLayout">
+		<put-attribute name="title" value="내가 쓴 후기" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/reviewlist.jsp" />
+	</definition>
+	<definition name="review_detail" extends="baseLayout">
+		<put-attribute name="title" value="후기 상세페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/review_detail.jsp" />
+	</definition>
+	<definition name="review_detail_edit" extends="baseLayout">
+		<put-attribute name="title" value="후기 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/review_detail_edit.jsp" />
+	</definition>	
+	<definition name="conlist" extends="baseLayout">
+		<put-attribute name="title" value="상담내역" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/conlist.jsp" />
+	</definition>
+		
+</tiles-definitions>

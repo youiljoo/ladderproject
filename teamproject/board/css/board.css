@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+.search{
+	text-align: center;
+    margin-top: 30px;
+}
+
+#keywordInput{
+	border:1px solid #000000;
+}
+
+#searchType{
+	border:1px solid #000000;
+}
+
+.paging{
+	text-align: center;
+    margin-top: 30px;    
+}
+
+.active{
+	color:606060;
+	text-decoration:none;
+}
+
+.category-block{
+	padding-left:10px;
+	padding-right:10px; 
+	background-color:white; 
+	width:120px; 
+	height:100px; 
+	display:inline-block;
+	margin-left:120px;
+}
+
+.category-block a{
+	margin-top:200px;
+	font-weight:600;
+	line-height:4;
+	
+}
+
+#common {
+	padding-left:15px;
+	padding-right:25px; 
+	background-color:#dedede;
+}
+
+#common h2{
+	margin-left:500px;
+	margin-top:5px;
+}
+
+#call {
+	width:300px; 
+	height:250px; 
+	margin-left:-900px; 
+	margin-top:-200px;
+}
+
+.board_title h2{
+	text-align:center;
+	font-size:50px;
+}
+
+.cbody {
+	margin-top:-100px;
+}
+
+#writing{
+	padding-left:15px;
+	padding-right:25px;	
+}
+#writing h2{
+	margin-left:500px;
+	margin-bottom:100px;
+}
+.n-same-row{
+	border-bottom:1px solid #000000;
+}
+.bg-select{
+	margin-left:50px;
+	margin-top:-10px;
+
+}
+
+.n-input{
+	margin-left:50px; 
+	margin-top:10px;
+	margin-bottom:10px;
+	border:1px solid #000000;
+}
+
+.m-input{
+	margin-left:50px; 
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+
+.as-input{
+	margin-left:-300px; 
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+
+.as-input2{
+	margin-left:-300px; 
+	margin-top:10px;
+	margin-bottom:10px;
+	border:1px solid #000000;
+}
+
+	
+	
+
+.cfooter{
+	margin-top:25px;
+}
+.cfooter h5{
+	text-align:right; font-size:20px; margin-top:50px;
+}
+#image{
+	float:right;
+	margin-right:-300px;
+	margin-top:130px;
+}
+#image_container{
+	height:250px;
+}
+#as_type{
+	border:1px solid #000000;
+	margin-left:-350px; 
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+
+#q_type{
+	border:1px solid #000000;
+}
+#preview{
+	width:40px;
+	height:30px;
+}
+
+.form-check{
+	margin-left:50px;
+	margin-top:10px;
+}
+
+.form-check-input1{
+	margin-left:-10px;
+}
+.form-check-input2{
+	margin-left:10px;
+}
+
+.form-check-label p{
+	font-size:20px;
+}
+
+.table_style th{
+	background: #f8f8f8;
+    color: #282828;
+    font-size: 13px;
+    padding: 20px 0;
+}
+.th_sort{
+	display: block;
+	height: 44px;
+	box-sizing: border-box;
+	border-bottom: 2px solid #3e3d55;
+    text-align: center;
+    line-height: 41px;
+    width:100px;
+    float: left;
+    margin-right:10px;
+    margin-left:-10px;
+    font-size:20px;
+}
+.th_subject{
+	display: block;
+	height: 44px;
+	box-sizing:border-box;
+	border-bottom: 2px solid #3e3d55;
+    text-align: center;
+    line-height: 41px;
+    width:970px;
+    float: center;
+    margin-right:10px;
+    font-size:20px;
+}
+.th_date{
+	display: block;
+	height: 44px;
+	box-sizing: border-box;
+	border-bottom: 2px solid #3e3d55;
+    text-align: center;
+    line-height: 41px;
+    width:150px;
+    float: right;
+    margin-top:-44px;
+    font-size:20px;
+}
+.th_sort1{
+	display: block;
+	height: 44px;
+	box-sizing: border-box;
+    text-align: center;
+    margin-top:3px;
+    width:100px;
+    float: left;
+    margin-right:10px;
+    margin-left:-10px;
+}
+.th_subject1{
+	display: block; 
+	height: 44px;
+	box-sizing: border-box;
+    text-align: center;
+    margin-top:10px;
+    width:970px;
+    float: center;
+    margin-right:10px;
+}
+.th_date1{
+	display: block; 
+	height: 44px;
+	box-sizing: border-box;
+    text-align: center;
+    margin-top:10px;
+    width:150px;
+    float: right;
+    margin-top:-44px;
+}
+.container p{
+	text-align:center;
+	margin-bottom:20px;
+}
+#nt_detail{
+	margin-top:-200px;
+}
+.list_nav{
+	padding: 33px 30px;
+	border-bottom: 1px solid #e2e2e6;
+	background: url(//ssl.nexon.com/s2/game/fo4/obt/common/bg_line.png) 0 0 repeat-x;
+    font-size: 16px; 
+  
+}
+.btn_prev_article{
+	color: #151432;
+	display: block;
+	line-height: 30px;
+}
+.btn_prev_article em{
+	color: #9e9ea2; font-style: normal; vertical-align: top; font-weight:300;
+}
+.btn_next_article{
+	color: #151432; display: block; line-height: 30px;
+}
+.btn_next_article em{
+	color: #9e9ea2; font-style: normal; vertical-align: top; font-weight: 300;
+}
+.nt_dt{
+	width:150px;
+}
+.nt_dt2{
+	width:800px;
+}
+
+.nt_dt h2{
+	text-align:center;border-bottom:1px solid #000000;
+}
+.nt_dt2 h2{
+	text-align:center;border-bottom:1px solid #000000;
+}
+#n_content{
+	text-align:center;
+	margin-left:50px;
+	font-style:normal;
+	color:#9e9ea2;
+}

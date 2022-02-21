@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="monitor" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/product/monitor.jsp" />
+   </definition>
+   
+   <definition name="mouse" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/product/mouse.jsp" />
+   </definition>
+   
+   <definition name="keyboard" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/product/keyboard.jsp" />
+   </definition>
+   
+   <definition name="speaker" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/product/speaker.jsp" />
+   </definition>
+   
+   <definition name="headset" extends="baseLayout">
+	 <put-attribute name="title" value="laddercom" />
+     <put-attribute name="body" value="/WEB-INF/views/product/headset.jsp" />
+   </definition>
+   
+	<definition name="prodetail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/product/prodetail.jsp" />
+	</definition>
+	
+	<definition name="prodetail_review_detail" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/product/prodetail_review_detail.jsp" />
+	</definition>
+	
+	<definition name="searchlist" extends="baseLayout">
+		<put-attribute name="title" value="laddercom" />
+		<put-attribute name="body" value="/WEB-INF/views/product/searchlist.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

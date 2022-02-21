@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="register" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 회원가입" />
+		<put-attribute name="body" value="/WEB-INF/views/register/register.jsp" />
+	</definition>
+	
+	<definition name="id" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 아이디 찾기_1" />
+		<put-attribute name="body" value="/WEB-INF/views/findandnew/id/id.jsp" />
+	</definition>
+	
+	<definition name="findid" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 아이디 찾기_2" />
+		<put-attribute name="body" value="/WEB-INF/views/findandnew/id/findid.jsp" />
+	</definition>
+	
+	<definition name="password" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 비밀번호 찾기_1" />
+		<put-attribute name="body" value="/WEB-INF/views/findandnew/password/password.jsp" />
+	</definition>
+	
+	<definition name="newpassword" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 비밀번호 찾기_2" />
+		<put-attribute name="body" value="/WEB-INF/views/findandnew/password/newpassword.jsp" />
+	</definition>
+	
+	<definition name="changepassword" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 비밀번호 찾기_3" />
+		<put-attribute name="body" value="/WEB-INF/views/findandnew/password/changepassword.jsp" />
+	</definition>
+	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 로그인" />
+		<put-attribute name="body" value="/WEB-INF/views/login/login.jsp" />
+	</definition>
+	
+	<definition name="loginform" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 로그인 실패" />
+		<put-attribute name="body" value="/WEB-INF/views/login/loginform.jsp" />
+	</definition>
+	
+	<definition name="removeid" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 회원탈퇴" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/removeid.jsp" />
+	</definition>
+	
+	<definition name="edit_pw" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 회원정보 수정 비밀번호 입력" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/edit_pw.jsp" />
+	</definition>
+	
+	<definition name="memberedit" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 회원정보 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/memberedit.jsp" />
+	</definition>
+	
+	<definition name="nonmember" extends="baseLayout">
+		<put-attribute name="title" value="사다리컴 비회원 주문조회" />
+		<put-attribute name="body" value="/WEB-INF/views/order/nonmember.jsp" />
+	</definition>
+</tiles-definitions>
+
+

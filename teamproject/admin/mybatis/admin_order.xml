@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin_order">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="orderGoodsResult" type="orderVO">
+		
+		<result property="memordernum" column="memordernum" />
+		<result property="user_id" column="user_id" />
+		<result property="productprice" column="productprice" />
+		<result property="productAmt" column="productAmt" />
+		<result property="totalprice" column="totalprice" />
+		<result property="memsqname" column="memsqname" />
+		<result property="memsqphonenum" column="memsqphonenum" />
+		<result property="mempayment" column="mempayment" />
+		<result property="memsqaddr" column="memsqaddr" />
+		<result property="productnum" column="productnum" />
+		<result property="productname" column="productname" />
+		<result property="delivery_message" column="delivery_message" />
+		<result property="pay_order_time" column="pay_order_time" />
+		<result property="order_state" column="order_state" />
+		<result property="ordername" column="ordername" />
+		
+	</resultMap>
+		
+	<select id = "adminOrder" resultType = "hashmap" parameterType="hashmap">
+		select memordernum, user_id, pay_order_time, productName, mempayment, order_state
+		from memberorder <include refid="searchOrder"></include>
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id = "orderListCnt" resultType="int">
+		select count(*)
+		from memberorder <include refid="searchOrder"></include>
+	</select>
+	
+	<sql id="searchOrder">
+		<if test="searchType != null">
+			<if test="searchType == 'i'.toString()">
+				<![CDATA[
+					where user_id like concat('%', #{keyword}, '%')
+				]]>
+			</if>
+		</if>
+	</sql>
+	
+	<select id = "selectOrder" resultType = "orderVO" >
+		<![CDATA[
+			select * from memberorder
+		]]>
+	</select>
+	
+	<select id = "adminSelectOrder" resultType = "orderVO" parameterType = "orderVO">
+		<![CDATA[
+			select * from memberorder
+			where memordernum = #{memordernum}
+		]]>
+	</select>
+	
+	<update id = "adminOrderUpdate" parameterType = "orderVO">
+		<![CDATA[
+			update memberorder set
+			order_state = #{order_state}
+			where memordernum = #{memordernum}
+		]]>
+	</update>
+</mapper>

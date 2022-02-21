@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.admin_member">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="memberResult" type="MemberVO">
+		
+		<result property="user_id" column="user_id" />
+		<result property="user_pw" column="user_pw" />
+		<result property="user_name" column="user_name" />
+		
+		<result property="user_phone" column="user_phone" />
+		<result property="nickname" column="nickname" />
+		<result property="user_email" column="user_email" />
+		
+		<result property="authority" column="authority" />
+		<result property="user_date" column="user_date" />
+		<result property="user_img" column="user_img" />
+		
+	</resultMap>	
+	
+  <!-- 관리자 회원정보 출력 -->
+  <select id = "adminSelect" resultType="hashmap" parameterType="hashmap">
+  		select user_id, user_phone, user_email, authority
+  		from member <include refid="searchMember"></include>
+  		limit #{pageStart}, #{perPageNum}
+  </select>
+  
+  <select id = "adminListCnt" resultType="int">
+  	select count(*)
+  	from member <include refid="searchMember"></include>
+  </select>
+  
+  <sql id="searchMember">
+  	<if test="searchType != null">
+  		<if test="searchType == 'i'.toString()">
+  			<![CDATA[
+  				where user_id like concat('%', #{keyword}, '%')
+  			]]>
+  		</if>
+  		
+  		<if test="searchType == 'p'.toString()">
+  			<![CDATA[
+  				where user_phone like concat('%', #{keyword}, '%')
+  			]]>
+  		</if>
+  		
+  		<if test="searchType == 'e'.toString()">
+  			<![CDATA[
+  				where user_email like concat('%', #{keyword}, '%')
+  			]]>
+  		</if>
+  	</if>
+  </sql>
+	<!-- 회원 리스트 -->  
+  <select id = "selectMember" resultType = "memberVO" parameterType = "memberVO">
+  	<![CDATA[
+  		select * from member
+  	]]>
+  	
+  </select>
+  
+  <!-- 관리자 회원정보 상세페이지 -->
+  <select id = "memberDetails" resultType = "memberVO" parameterType = "String">
+  	<![CDATA[
+  		select * from member
+  		where user_id = #{user_id}
+  	]]>
+  </select>
+  
+  <!-- 관리자 강제탈퇴 -->
+  <delete id = "adminDelete" parameterType = "String">
+  	<![CDATA[
+  		delete from member
+  		where user_id = #{user_id}
+  	]]>
+  </delete>
+  
+  <update id = "adminUpdate" parameterType = "memberVO">
+  	<![CDATA[
+  		update member set
+  		authority = #{authority}
+  		where user_id = #{user_id}
+  	]]>
+  </update>
+ 
+</mapper>

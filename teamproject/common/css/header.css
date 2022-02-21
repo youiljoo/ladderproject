@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-center{display: flex; justify-content: center; align-items: center; }
+
+ul, li{
+    list-style: none;
+    
+}
+
+
+/* header ------------------------------------- */
+
+
+#header {
+    width:100% ;
+    height: 100%;
+     margin: 0 auto;
+     
+}
+#header #h-twrap{
+	 width: 100%;
+     margin: 0 auto;
+     align-items: center;
+     border-top : 1px solid #6666; border-bottom : 1px solid #6666;
+}
+
+#header #h-t{
+	 align-items: center;
+    width: 1280px;
+    height: 35px;
+    display: flex;
+    justify-content: end;
+    margin:  0  auto;
+}
+
+#header #h-t ul{
+    width: 400px;
+    height: 100%;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    
+}
+
+#header #h-t ul li{
+    width: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#header #h-t ul li a{
+  text-align: center;
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+}
+
+#header #h-m {
+    width: 1280px;
+    height: 100px;
+    display: flex;
+    margin: 0 auto;
+}
+
+#header #h-m #search  {
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    margin-left: 20px;
+}
+
+#header #h-m #search form  {
+	width: 300px;
+    height: 100%;
+    display: flex;
+  
+}
+
+#header #h-m #search .main_input {
+ border-top : none; border-left : none; border-right : none;    margin-top : 40px; margin-bottom : 25px;  width : 250px; height : 30px;
+}
+#header #h-m #search .btn1 {
+	margin-top : 45px;
+	width: 20px;
+    height: 20px;
+   justify-content: center; align-items: center;
+
+}
+
+#header #h-m p{
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+#header #h-bwrap{
+	 width: 100%;
+     border-top : 1px solid #6666; border-bottom : 1px solid #6666;
+}
+#header #h-b {
+    width: 1280px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    
+   
+}
+
+#header #h-b a {
+ width: 40px;
+}
+
+#header #h-b img {
+    margin-top : 6px;
+    margin-left : 18px;
+    border: 1px;
+    background-color: rgba( 255, 255, 255, 0.5 );
+     justify-content: center;
+     align-items: center;
+}
+
+#header #h-b ul {
+	margin-left : 20px;
+	width: 600px;
+    height: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  
+}
+
+#header #h-b ul li a{
+	
+  text-align: center;
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+}
+
+#header #h-b #b-right {
+   width : 1200px;
+   
+   float: right;
+}
+
+#header #h-b #b-right a{
+  	text-decoration: none; /* 링크의 밑줄 제거 */
+  	color: inherit; /* 링크의 색상 제거 */
+    align-items: center;
+    width : 100px;
+    height : 50px;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	float: right;
+	
+}

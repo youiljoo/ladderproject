@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.cart">
+	<!-- 리절트 맵 정의 -->
+	<resultMap id="cartResult" type="CartVO">
+		<result property="cid" column="cid" />
+		<result property="productNum" column="productNum" />
+		<result property="cartproductAmt" column="cartproductAmt" />
+		<result property="user_id" column="user_id" />
+		<result property="cart_cklimit" column="cart_cklimit" />
+		<result property="cart_ckid" column="cart_ckid" />
+		<result property="member_id" column="member_id" />
+		<result property="cart_mem_no" column="cart_mem_no" />
+	</resultMap> 
+	 
+	<resultMap id="goodsResult" type="GoodsVO">
+		<result property="productNum" column="productNum" /> 
+		<result property="productName" column="productName" />
+		<result property="productPrice" column="productPrice" />
+		<result property="category" column="category" />
+		<result property="subcategory" column="subcategory" />
+
+		<result property="productImage" column="productImage" />
+		<result property="productStock" column="productStock" />
+		<result property="company" column="company" />
+		<result property="productDate" column="productDate" />
+		<result property="fileSize" column="fileSize" />
+		<result property="originFileName" column="fileName" />
+		<result property="productStar" column="productStar" />
+	
+	</resultMap>
+
+	<select id="selectCartList"  parameterType="cartVO"  resultMap="cartResult"   >
+	   
+		select *
+		from cart 
+		where
+		<if test="cart_mem_no == 0"> 
+			cart_ckid = #{cart_ckid}
+		</if>
+		<if test="cart_mem_no != 0">
+			cart_mem_no = #{cart_mem_no}
+		</if> 
+			order by productNum asc
+	</select>
+
+	<select id="selectGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
+      <![CDATA[
+          select g.*, d.fileName from product g, product_image d 
+          where g.productNum=d.productNum
+          and d.filetype='main_image'
+           and g.productNum in
+      ]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.productNum}
+		</foreach>
+	order by productNum asc
+		
+	</select>
+	 
+	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
+
+		    select if(count(*)=0, 'false', 'true') from cart
+			where productNum=#{productNum}
+			  and 	<if test="cart_mem_no == 0"> 
+			cart_ckid = #{cart_ckid}
+		</if>
+		<if test="cart_mem_no != 0">
+			cart_mem_no = #{cart_mem_no} 
+		</if>   
+	</select>
+	<insert id="insertGoodsInCart" parameterType="cartVO">
+		INSERT INTO CART (cid , productNum , user_id , cartproductAmt
+		 ,
+		<if test="cart_mem_no == 0">
+		CART_CKID 
+		</if>
+		<if test="cart_mem_no != 0">
+		cart_mem_no,member_id
+		</if>
+		)VALUES(
+		#{cid},
+		 #{productNum} , #{user_id}, #{cartproductAmt},
+		<if test="cart_mem_no == 0">
+		 #{cart_ckid}
+		</if> 
+		<if test="cart_mem_no != 0">
+		${cart_mem_no},${member_id}
+		</if> 
+		) 
+	</insert> 
+	<!-- 로그인시 비회원장바구니 -> 회원장바구니 -->
+	<update id="cartUpdate" >
+	UPDATE CART SET cart_mem_no = #{member_id} WHERE cart_ckid = #{cart_ckid}
+	</update> 
+
+
+	<update id="updateCartGoodsQty" parameterType="cartVO">
+			update cart
+			       set cartproductAmt=#{cartproductAmt}
+		 	       where productNum=#{productNum}
+			        and 
+			        <if test="cart_mem_no == 0"> 
+			cart_ckid = #{cart_ckid}
+		</if>
+		<if test="cart_mem_no != 0">
+			cart_mem_no = #{cart_mem_no} 
+		</if>   
+    	
+	</update>
+	<delete id="deleteCartGoods" parameterType="int">
+	    <![CDATA[
+	      delete from cart
+	      where cid=#{cid}
+    	]]>
+	</delete>
+	
+	<delete id="deleteAllCartGoods" parameterType="cartVO">
+
+	      delete from cart
+	      where 
+	    <if test="cart_mem_no == 0"> 
+			 user_id=#{user_id}
+		</if>
+		<if test="cart_mem_no != 0">
+			cart_mem_no = #{cart_mem_no} 
+		</if>   
+	     
+	</delete>
+	
+
+	<select id="selectMaxCartId" resultType="int">
+	    <![CDATA[
+			select ifnull(max(cid), 0) + 1 from cart 
+    	]]>
+	</select>
+
+</mapper>

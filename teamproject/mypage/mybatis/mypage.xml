@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mypage">
+<!-- 리절트 맵 정의 -->	
+	<resultMap id="orderGoodsResult" type="orderVO">
+		<result property="productNum" column="productNum"/>
+		<result property="user_id" column="user_id" />
+		<result property="memorderseqnum" column="memorderseqnum" />
+		<result property="re_num" column="re_num" />
+		<result property="re_content" column="re_content"/>
+		
+	</resultMap>	
+	
+	<!-- 마이페이지 메인 -->
+	<select id = "listMyOrderGoods" resultType = "hashmap" parameterType = "hashmap">
+		<![CDATA[
+			select * from memberorder
+			where user_id = #{user_id}
+			order by memorderseqnum
+			limit 0,8
+		]]>
+	</select>
+	
+	<select id = "myMain" resultType = "int">
+		select count(*) 
+		from memberorder
+		where user_id = #{user_id}
+		
+	</select>
+	
+	<delete id = "deleteId">
+		<![CDATA[
+			dalete from member
+			where user_id = #{user_id}
+			and user_pw = #{user_pw}
+		]]>
+	</delete>
+	
+	<!-- 마이페이지 전체보기 -->
+	<select id = "orderList" resultType="hashmap" parameterType="hashmap">
+		select memorderseqnum, productName, productAmt, totalprice, order_state, productnum
+		from memberorder 
+		where user_id = #{user_id}
+		<choose>
+			<when test = "searchType == 'n'.toString()">
+				<![CDATA[
+					and memorderseqnum like concat('%', #{keyword}, '%')
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					and productname like concat('%', #{keyword}, '%')
+				]]>
+			</otherwise>
+		</choose>
+		limit #{pageStart}, #{perPageNum}
+		
+	</select>
+	
+	<select id = "orderListCnt" resultType="int">
+		select count(*)
+		from memberorder
+		where user_id = #{user_id}
+		<choose>
+			<when test="searchType == 'n'.toString()">
+				<![CDATA[
+					and memorderseqnum like concat('%', #{keyword}, '%')
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					and productname like concat('%', #{keyword}, '%')
+				]]>
+			</otherwise>
+		</choose>
+	</select>
+
+	<!-- A/S 교환, 반품 내역 -->
+	<select id = "mypageSelect" resultType="hashmap" parameterType="hashmap">
+		select as_no, as_type, as_name, as_state
+		from `as` 
+		where user_id = #{user_id}
+		<choose>
+			<when test = "searchType == 'n'.toString()">
+				and as_no like concat('%', #{keyword}, '%')
+			</when>
+			<otherwise>
+				and as_name like concat('%', #{keyword}, '%')
+			</otherwise>
+		</choose>
+		limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id = "mypageList" resultType = "int">
+		select count(*)
+		from `as` 
+		where user_id = #{user_id}
+		<choose>
+			<when test = "searchType == 'n'.toString()">
+				<![CDATA[
+					and as_no like concat('%', #{keyword}, '%')
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+					and as_name like concat('%', #{keyword}, '%')
+				]]>
+			</otherwise>
+		</choose>
+	</select>
+
+	<resultMap id="imgResult" type="ReviewimageVO">
+		<result property="imageFileNO" column="imageFileNO" />
+		<result property="re_num" column="re_num" />
+		<result property="imageFileName" column="imageFileName" />
+	</resultMap>
+	
+	<!-- 마이페이지 상품후기 작성 (여러 이미지 첨부기능)-->
+		
+		<insert id="pro_review" parameterType="java.util.Map">
+			<![CDATA[
+			insert into productreview (re_num, re_star,re_content,re_regdate, imageFileName, memorderseqnum, productNum, user_id, productName)
+			values (null,#{re_star},#{re_content},now(),#{imageFileName},#{memorderseqnum},#{productNum},#{user_id},#{productName})
+			]]>
+		</insert>
+		
+		<insert id="insertNewImage" parameterType="java.util.List">
+			
+				insert into re_imagefile(imageFileNO,imageFileName,re_num,regdate) values 
+				<foreach collection="list" item="item" separator=",">
+				(#{item.imageFileNO},#{item.imageFileName},#{item.re_num},now())
+				</foreach>
+		</insert>
+		<select id="selectNewImageFileNO" resultType="int">
+			<![CDATA[
+				select ifnull(max(imageFileNO),0) from re_imageFile
+			]]>
+		</select>
+		
+		
+		
+		<select id="selectNewRe_num" resultType="int">
+			<![CDATA[
+				select ifnull(max(re_num),0)+1 from productreview
+			]]>
+		</select>
+		
+		<!-- 마이페이지 내가 쓴 후기 목록 -->
+		
+		<!-- 1. 후기 목록(페이징, 검색 기능 추가) -->
+		
+		
+		<select id="reviewList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT re_num, productName, re_content, re_regdate, user_id
+            FROM productreview where user_id=#{user_id}
+            ORDER BY re_num asc
+          	LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="reviewListCnt" resultType="int">
+        SELECT count(*)
+        FROM productreview where user_id=#{user_id}
+        	       
+		</select>
+		
+		<select id="selectImageFileList" resultMap="imgResult" parameterType="int">
+			<![CDATA[
+				select * from re_imageFile where re_num=#{re_num}
+			]]>
+		</select>
+		
+		<!-- 후기 수정 -->
+		<select id="review_edit" resultMap="orderGoodsResult" parameterType="int">
+			<![CDATA[
+				select * from productreview
+				where re_num = #{re_num}
+			]]>
+		</select>
+		
+		<update id="pro_review_edit" parameterType="hashmap">
+			<![CDATA[
+				update productreview set
+				 re_star = #{re_star},
+				 re_content = #{re_content},
+				 imageFileName = #{imageFileName}
+				 where re_num = #{re_num}
+			]]>
+		</update>
+		
+		<update id="updateImage" parameterType="hashmap">
+			<![CDATA[
+				update re_imagefile set
+				imageFileName = #{imageFileName},
+				regdate = now()
+				where re_num = #{re_num}
+			]]>
+		</update>
+		
+		
+		<!-- 2. 후기 삭제 -->
+		
+		<delete id="deleteReview" parameterType="int">
+			<![CDATA[
+			delete from productreview where re_num=#{re_num};
+			]]>
+		</delete>
+
+		<!-- 상담 내역 -->
+		
+		<select id="conList" resultType="hashmap" parameterType="hashmap">
+        
+            SELECT * FROM consulting
+            where user_id=#{user_id}
+            ORDER BY c_no asc
+          	LIMIT #{pageStart}, #{perPageNum}
+        	
+		</select>
+		
+		<select id="conListCnt" resultType="int">
+        SELECT count(*)
+        FROM consulting 
+        where user_id=#{user_id}
+        	       
+		</select>
+</mapper>
